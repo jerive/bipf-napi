@@ -6,7 +6,8 @@
         "src/binding.cc"
       ],
       "include_dirs": [
-          "<!(node -e \"require('napi-macros')\")"
+          "<!(node -e \"require('napi-macros')\")",
+          "<(module_root_dir)/src"
       ],
       "libraries": [
       ]

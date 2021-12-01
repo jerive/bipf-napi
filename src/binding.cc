@@ -10,12 +10,12 @@ NAPI_METHOD(decode) {
   NAPI_ARGV(1)
   NAPI_ARGV_BUFFER(buffer, 0)
 
-  unsigned char* read;
-  unsigned long tag = varint_decode(buffer, VARINT_MAX_READ, read);
+  unsigned char* bytes;
+  unsigned long tag = varint_decode(buffer, VARINT_MAX_READ, bytes);
   unsigned long long typ = tag & TAG_MASK;
   unsigned long long size = tag >> TAG_SIZE;
 
-  NAPI_RETURN_UINT32(tag)
+  NAPI_RETURN_UINT32(size)
 }
 
 NAPI_INIT() {
