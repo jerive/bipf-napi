@@ -4,18 +4,37 @@
 
 static const uint8_t TAG_SIZE = 3;
 static const uint8_t TAG_MASK = 7;
+static const uint8_t  STRING = 0; // 000
+static const uint8_t  BUFFER = 1;// 001
+
+static const uint8_t INT = 2; // 010 // 32bit int
+static const uint8_t DOUBLE = 3; // 011 // use next 8 bytes to encode 64bit float
+
+static const uint8_t ARRAY = 4; // 100
+static const uint8_t OBJECT = 5; // 101
+
+static const uint8_t BOOLNULL = 6; // 110 // and use the rest of the byte as true/false/null
+static const uint8_t RESERVED = 7; // 111
 static const int VARINT_MAX_READ = 15;
 
 NAPI_METHOD(decode) {
-  NAPI_ARGV(1)
+  NAPI_ARGV(2)
   NAPI_ARGV_BUFFER(buffer, 0)
+  uint32_t start;
+
+  if (argc == 2) {
+    NAPI_ARGV_UINT32(start2, 1)
+    start = start2;
+  } else {
+    start = 0;
+  }
 
   unsigned char* bytes;
   unsigned long tag = varint_decode(buffer, VARINT_MAX_READ, bytes);
   unsigned long long typ = tag & TAG_MASK;
   unsigned long long size = tag >> TAG_SIZE;
 
-  NAPI_RETURN_UINT32(size)
+  NAPI_RETURN_UINT32(start)
 }
 
 NAPI_INIT() {
