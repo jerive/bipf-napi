@@ -21,5 +21,8 @@
   "dependencies": {
     "napi-macros": "^2.0.0",
     "node-gyp-build": "^4.3.0"
+  },
+  "devDependencies": {
+    "bipf": "^1.5.4"
   }
 }
