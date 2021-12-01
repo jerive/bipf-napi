@@ -1,0 +1,25 @@
+{
+  "name": "bipf-napi",
+  "version": "1.0.0",
+  "description": "C++ port of ssbc/bipf",
+  "main": "index.js",
+  "scripts": {
+    "preinstall": "sh preinstall.sh",
+    "install": "node-gyp install && node-gyp-build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jerive/bipf-napi.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jerive/bipf-napi/issues"
+  },
+  "homepage": "https://github.com/jerive/bipf-napi#readme",
+  "dependencies": {
+    "napi-macros": "^2.0.0",
+    "node-gyp-build": "^4.3.0"
+  }
+}
