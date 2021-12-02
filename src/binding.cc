@@ -15,7 +15,7 @@ static const uint8_t OBJECT = 5; // 101
 
 static const uint8_t BOOLNULL = 6; // 110 // and use the rest of the byte as true/false/null
 static const uint8_t RESERVED = 7; // 111
-static const int VARINT_MAX_READ = 15;
+static const int VARINT_MAX_READ = 10;
 
 NAPI_METHOD(decode) {
   NAPI_ARGV(2)
